@@ -1,0 +1,21 @@
+<div class="container-fluid mt-5 mb-5">
+  <div class="row">
+    <div class="col-12 p-0">
+      <div class="col-12 p-0">
+        <h4>{{category.title}}</h4>
+      </div>
+      <div class="col-12 border-bottom p-0">
+        <span class="subtitle">Epic deals from your favorite restaurants!</span>
+      </div>
+      <div class="col-12">
+        <div class="row p-0 m-0">
+
+          <div *ngFor="let _item of category.items" class="col-6 p-1 pr-2">
+            <app-item [categoryId]="category.id"  [categoryTitle]="category.title" [item]="_item"></app-item>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

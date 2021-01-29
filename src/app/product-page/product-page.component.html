@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <app-header [whiteTheme]="true"></app-header>
+  <div class="container-fluid header-spacer-dark"></div>
+  <div class="bg-noimage p-0 m-0" [style.backgroundImage]="'url('+shop.image+')'"></div>
+  <app-type-bar></app-type-bar>
+  <div class="container-fluid bg-white scrollable-content">
+    <div class="row p-0">
+      <div class="col-10 offset-1 mt-5">
+        <div class="container-fluid">
+          <span class="post-c-green post-f-xsmall"><b>${{shop.priceDelivery}} DELIVERY</b></span>
+          <h1 class="post-f-bold mt-4">{{shop.title}}</h1>
+          <div class="row">
+            <div class="col-12">
+              <div class="container-rounded-wide d-inline-flex align-items-center ">
+                <span class="material-icons post-f-medium">query_builder</span> <span
+                class="post-f-xxsmall ml-1">{{shop.delivery}} </span>
+              </div>
+              <div class="container-rounded-wide d-inline-flex align-items-center">
+                <span class="material-icons post-f-medium">query_builder</span> <span
+                class="post-f-xxsmall ml-1 "> {{shop.position}} </span>
+              </div>
+              <div class="container-rounded-wide d-inline-flex align-items-center">
+                <span class="material-icons post-f-medium">query_builder</span> <span class="post-f-xxsmall ml-1">  MORE INFO </span>
+                <span class="material-icons post-f-xsmall">keyboard_arrow_up</span>
+              </div>
+            </div>
+          </div>
+
+          <div *ngFor="let _category of shop.categories" class="col-12">
+            <app-items-category [category]="_category"></app-items-category>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

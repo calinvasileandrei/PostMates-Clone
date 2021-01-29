@@ -1,1 +1,237 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 767px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: block;
+  }
+}
+
+*{
+  font-size: small;
+}
+
+/*Bootstraps Edits*/
+
+.row{
+  padding: 0;
+  margin: 0;
+}
+
+.col{
+  padding: 0;
+  margin: 0;
+}
+
+.container-fluid{
+  padding: 0;
+  margin: 0;
+}
+
+.form-control {
+  border-bottom: solid 2px #ffffff;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.form-control:hover{
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.form-control:focus{
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.btn:focus{
+  box-shadow: none;
+}
+
+/*Texts*/
+.subtitle{
+  font-size: x-small;
+  color: #979CA6;
+}
+
+
+.post-f-xxsmall{
+  font-size: xx-small;
+}
+
+.post-f-xsmall{
+  font-size: x-small;
+}
+
+.post-f-small{
+  font-size:small;
+}
+
+.post-f-medium{
+  font-size: medium;
+}
+.post-f-xlarge{
+  font-size: x-large;
+}
+.post-f-xxlarge{
+  font-size: xx-large;
+}
+
+.post-f-xxxlarge{
+  font-size: xxx-large;
+}
+.post-f-bold{
+  font-weight: bold;
+}
+
+/*Colors*/
+
+.post-bg-yellow{
+  background-color: #FED928;
+}
+
+.post-bg-white{
+  background-color: #fff;
+}
+
+.post-c-yellow{
+  color: #FED928;
+}
+
+.post-c-white{
+  color: #fff;
+}
+
+.post-c-green{
+  color: #00CC99;
+}
+
+.post-c-red{
+  color: #FDECE9;
+}
+
+.post-c-gray{
+  color: #8F95A3;
+}
+
+.post-bg-transparent{
+  background-color: transparent;
+  border: 0px;
+}
+
+
+.container-rounded{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  border: solid 1px #979CA6;
+  width: 80px;
+  border-radius: 16px;
+}
+
+.container-rounded-wide{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  border: solid 1px #979CA6;
+  border-radius: 16px;
+  height: 3em;
+  padding: 1em;
+  margin-right: 2em;
+}
+
+.post-black-button{
+  background-color: #000;
+  border: solid 1px #000;
+}
+
+.bg-image{
+  background-image: url("/assets/images/bg.png");
+  background-size: cover;
+  position: fixed;
+  top: 4em;
+  z-index: -1;
+  height: 30vh;
+  width: 100%;
+  overflow-y: hidden;
+}
+.bg-noimage{
+  background-size: cover;
+  position: fixed;
+  top: 4em;
+  z-index: -1;
+  height: 30vh;
+  width: 100%;
+  background-position: center;
+  overflow-y: hidden;
+}
+
+
+.header{
+  position: sticky;
+  top: 0;
+  height: 4em;
+  overflow-y: hidden;
+  z-index: 3;
+}
+
+.header2{
+  position: sticky;
+  top: 4em;
+  overflow-y: hidden;
+  z-index: 2;
+
+}
+
+.header-spacer{
+  height: 30vh;
+  width: 100%;
+  background: transparent;
+}
+
+.header-spacer-dark{
+  height: 30vh;
+  width: 100%;
+  z-index: 1;
+  /* background-color: rgba(0,0,0,0.6); */
+}
+
+.scrollable-content{
+  z-index: -1;
+}
+
+.valign-center{
+  display: inline;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+.post-title{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.selected-border{
+  border-bottom: 1px solid #00CC99;
+}
+
+.post-badge{
+  background-color: #FDECE9;
+  color: #EB4826;
+  padding: 0.5em;
+}
+
