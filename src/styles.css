@@ -8,6 +8,9 @@
   .mobile {
     display: block;
   }
+  .display-header{
+    display: none;
+  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -17,6 +20,16 @@
   }
   .desktop {
     display: block;
+  }
+  .display-header{
+    display: none;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px){
+  .display-header{
+    display: inline;
   }
 }
 
@@ -132,6 +145,26 @@
   border: 0px;
 }
 
+
+.cart-container{
+  display: flex;
+  align-self: start;
+  justify-content: center;
+  border: solid 1px #979CA6;
+  border-radius: 16px;
+  width: 120px;
+  padding: 2em;
+
+}
+
+.container-square{
+  display: inline-flex;
+  justify-content: center;
+  border: solid 1px #00CC99;
+  background-color: #00CC99;
+  width: 80px;
+  color: white;
+}
 
 .container-rounded{
   display: flex;

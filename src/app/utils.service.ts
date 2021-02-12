@@ -6,311 +6,25 @@ import {Injectable} from '@angular/core';
 
 
 export class UtilsService {
-  sections: Section[] = [
-    {
-      id: 1, title: 'Daily Deals 1', subtitle: 'Epic deals from your favorite restaurants!',
-      shops: [
-        {
-          id: 1,
-          title: 'Ranch Burger Co. 1',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers',
-              items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 1',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 2,
-                  title: 'The House Burger 2',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 3,
-                  title: 'The House Burger 3',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 4,
-                  title: 'The House Burger 4',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 5,
-                  title: 'The House Burger 5',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 6,
-                  title: 'The House Burger 6',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 7,
-                  title: 'The House Burger 7',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: 'Ranch Burger Co. 2',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers 2', items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 2',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: 'Ranch Burger Co. 1',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers', items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 1',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-          ],
-    },
-    {
-      id: 2, title: 'Daily Deals 2', subtitle: 'Epic deals from your favorite restaurants!',
-      shops: [
-        {
-          id: 1,
-          title: 'Ranch Burger Co. 2',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers 2',
-              items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 1',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 2,
-                  title: 'The House Burger 2',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 3,
-                  title: 'The House Burger 3',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 4,
-                  title: 'The House Burger 4',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: 'Ranch Burger Co. 2',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers 2', items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 2',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: 'Ranch Burger Co. 1',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers', items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 1',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-      ],
-    },
-    {
-      id: 3, title: 'Daily Deals 3', subtitle: 'Epic deals from your favorite restaurants!',
-      shops: [
-        {
-          id: 1,
-          title: 'Ranch Burger Co. 3',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers 3',
-              items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 1',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 2,
-                  title: 'The House Burger 2',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 3,
-                  title: 'The House Burger 3',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                },
-                {
-                  id: 4,
-                  title: 'The House Burger 4',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: 'Ranch Burger Co. 2',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers 2', items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 2',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: 'Ranch Burger Co. 1',
-          priceDelivery: 4.99,
-          delivery: '35-45 MIN',
-          badge: '$5 OFF 20$',
-          verified: true,
-          image: 'https://raster-static.postmates.com/?url=com.postmates.img.prod.s3.amazonaws.com%2F6fc13aa8-cb4f-43fd-bdfc-18dc8a8f1da7%2Forig.jpg&quality=85&w=1500&h=0&mode=auto&format=webp&v=4',
-          position: '95 DELANCEY ST (1.0 MI)',
-          categories: [
-            {
-              id: 1, title: 'Burgers', items: [
-                {
-                  id: 1,
-                  title: 'The House Burger 1',
-                  description: 'Beef patty, avocado, carmelized onions, and gruyere cheese on a brioche bun.',
-                  price: 15.59
-                }
-              ]
-            }
-          ]
-        },
-      ],
-    },
-    ];
-
 
     constructor() {
     }
+
+    cart:Item[] =[];
+    cartTotale:number=0;
+    userLogged:boolean = false;
 }
+
 
 export interface Section {
-  id: number;
+  _id: string;
   title: string;
   subtitle: string;
-  shops: Shop[];
+  restaurants: string[]; // Shops
 }
 
-export interface Shop {
-  id: number;
+export interface Restaurant {
+  _id: string;
   title: string;
   priceDelivery: number;
   delivery: string;
@@ -318,19 +32,22 @@ export interface Shop {
   verified: boolean;
   image: string;
   position: string;
-  categories: Category[];
+  categories: string[]; // Category[];
 }
 
 
 export interface Category{
-  id: number;
+  _id: string;
   title: string;
-  items: Item[];
+  restaurant: string;
+  products: string[]; // Item[];
 }
 
 export interface Item{
-  id: number;
+  _id: string;
   title: string;
+  restaurant: string;
+  category: string;
   description: string;
   price: number;
 }

@@ -1,33 +1,63 @@
-<div class="container-fluid">
-  <app-header [whiteTheme]="true"></app-header>
+<div class="container-fluid" *ngIf="restaurant">
+  <app-header [whiteTheme]="true" [buttons]="true"></app-header>
   <div class="container-fluid header-spacer-dark"></div>
-  <div class="bg-noimage p-0 m-0" [style.backgroundImage]="'url('+shop.image+')'"></div>
+  <div class="bg-noimage p-0 m-0" [style.backgroundImage]="'url('+restaurant.image+')'"></div>
   <app-type-bar></app-type-bar>
   <div class="container-fluid bg-white scrollable-content">
     <div class="row p-0">
-      <div class="col-10 offset-1 mt-5">
+      <div class="col-12 col-md-10 offset-md-1 mt-5">
         <div class="container-fluid">
-          <span class="post-c-green post-f-xsmall"><b>${{shop.priceDelivery}} DELIVERY</b></span>
-          <h1 class="post-f-bold mt-4">{{shop.title}}</h1>
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-md-6">
+              <span class="post-c-green post-f-xsmall"><b>${{restaurant.priceDelivery}} DELIVERY</b></span>
+              <h1 class="post-f-bold mt-4">{{restaurant.title}}</h1>
               <div class="container-rounded-wide d-inline-flex align-items-center ">
                 <span class="material-icons post-f-medium">query_builder</span> <span
-                class="post-f-xxsmall ml-1">{{shop.delivery}} </span>
+                class="post-f-xxsmall ml-1">{{restaurant.delivery}} </span>
               </div>
               <div class="container-rounded-wide d-inline-flex align-items-center">
                 <span class="material-icons post-f-medium">query_builder</span> <span
-                class="post-f-xxsmall ml-1 "> {{shop.position}} </span>
+                class="post-f-xxsmall ml-1 "> {{restaurant.position}} </span>
               </div>
               <div class="container-rounded-wide d-inline-flex align-items-center">
                 <span class="material-icons post-f-medium">query_builder</span> <span class="post-f-xxsmall ml-1">  MORE INFO </span>
                 <span class="material-icons post-f-xsmall">keyboard_arrow_up</span>
               </div>
             </div>
+            <div class="col-12 col-md-6 d-flex justify-content-end align-items-top">
+              <div class="row ">
+                <div class="col-12 d-flex justify-content-end align-items-top ">
+                  <span class="cart-container post-f-xsmall" (click)="gotTOCart()" >
+                    <span class="material-icons post-f-medium">shopping_cart</span>
+                    <div class="border-right mr-2 ml-2"></div>
+                    <b>{{this.utils.cart.length}} </b>
+                  </span>
+
+                </div>
+                <div class="col-12">
+                  <div *ngFor="let _item of this.utils.cart" class="mt-2">
+                    <div class="row d-flex align-items-baseline border-bottom">
+                      <div class="col-8 border-right">
+                        <div class="p-2">
+                           {{_item.title}}</div>
+                      </div>
+                      <div class="col-4">
+                        {{_item.price | currency:'USD'}}
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="this.utils.cartTotale>0">
+                    <span>Totale: {{this.utils.cartTotale | currency: 'USD'}}</span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
           </div>
 
-          <div *ngFor="let _category of shop.categories" class="col-12">
-            <app-items-category [category]="_category"></app-items-category>
+          <div *ngFor="let _category of restaurant.categories" class="col-12">
+            <app-items-category [categoryID]="_category"></app-items-category>
           </div>
         </div>
 

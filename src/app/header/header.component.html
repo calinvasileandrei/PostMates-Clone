@@ -1,31 +1,40 @@
 <div [class]="'container-fluid header m-0 p-0 '+selectTheme()">
   <div class="row p-2 ">
     <div class="col-10 offset-1 desktop">
-      <div class="row justify-content-around align-items-center">
-        <div class="col-6 list-inline ">
-          <span class="list-inline-item post-title" [routerLink]="['']" >Postmates</span>
-          <app-search-bar class="list-inline-item"  [placeholder]="'Search for anything...'" ></app-search-bar>
+      <div class="row justify-content-between">
+        <div class="col-auto d-inline-flex align-items-center">
+          <span class="post-title" [routerLink]="['']" >Postmates</span>
+          <app-search-bar class="display-header"  [placeholder]="'Search for anything...'" ></app-search-bar>
 
         </div>
-        <div class="col-6">
+        <div class="col-auto">
           <ul class="list-inline mt-2">
             <li class="list-inline-item pr-2 pl-2 border-bottom border-dark post-f-xsmall"> FOOD </li>
             <li class="list-inline-item pr-2 pl-2 post-f-xsmall">FRESH</li>
             <li class="list-inline-item pr-2 pl-2 post-f-xsmall">DRINKS</li>
             <li class="list-inline-item pr-2 pl-2 post-f-xsmall">CONVENIENCE</li>
-            <li class="list-inline-item pr-2 pl-2 post-f-xsmall">
-              <button class="btn container-rounded">
+
+            <li class="list-inline-item pr-2" *ngIf="!this.utils.userLogged" >
+              <button class="btn container-rounded" *ngIf="buttons"[routerLink]="['/login']" >
                 <b class="post-f-xsmall">SIGN IN</b>
               </button>
             </li>
-            <li class="list-inline-item">
-              <button [class]="'btn container-rounded post-black-button '+selectButtonColor()">
+            <li class="list-inline-item pl-2" [routerLink]="['/register']" *ngIf="!this.utils.userLogged"  >
+              <button [class]="'btn container-rounded post-black-button '+selectButtonColor()" *ngIf="buttons">
                <b class="post-f-xsmall">SIGN UP</b>
+              </button>
+            </li>
+            <li class="list-inline-item pl-2" (click)="logout()"  *ngIf="this.utils.userLogged"  >
+              <button [class]="'btn container-rounded post-black-button '+selectButtonColor()" *ngIf="buttons">
+                <b class="post-f-xsmall">LOG OUT</b>
               </button>
             </li>
           </ul>
         </div>
       </div>
+    </div>
+    <div class="col-12 mobile">
+      <app-search-bar [placeholder]="'Search for anything...'"></app-search-bar>
     </div>
   </div>
 </div>

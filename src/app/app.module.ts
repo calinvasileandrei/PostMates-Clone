@@ -8,9 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TypeBarComponent } from './type-bar/type-bar.component';
 import { ShopsSectionComponent } from './shops-section/shops-section.component';
-import { ShopCardComponent } from './shop-card/shop-card.component';
+import { RestaurantCardComponent } from './shop-card/restaurant-card.component';
 import { ItemComponent } from './item/item.component';
 import { ItemsCategoryComponent } from './items-category/items-category.component';
+import {HttpClientModule} from '@angular/common/http';
+import {AjaxService} from './ajax.service';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,15 +27,22 @@ import { ItemsCategoryComponent } from './items-category/items-category.componen
     SearchBarComponent,
     TypeBarComponent,
     ShopsSectionComponent,
-    ShopCardComponent,
+    RestaurantCardComponent,
     ItemComponent,
-    ItemsCategoryComponent
+    ItemsCategoryComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    CartPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
+  providers: [
+    AjaxService
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

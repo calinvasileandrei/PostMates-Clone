@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UtilsService} from '../utils.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,16 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() whiteTheme: boolean;
-  constructor() { }
+  @Input() buttons: boolean;
+  idUtente;
+  nomeUtente;
+  logged=true;
+
+
+  constructor(
+    public utils: UtilsService,
+    public router: Router
+  ) { }
 
   selectTheme = () => {
     return this.whiteTheme ? 'post-bg-white' : 'post-bg-yellow';
@@ -17,7 +28,24 @@ export class HeaderComponent implements OnInit {
     return this.whiteTheme ? 'post-c-white' : 'post-c-yellow';
   }
 
+  isAuth = ()=>{
+    if(localStorage.getItem('id') != null ){
+      this.logged = false;
+      console.log("logged in");
+    }
+  }
+
+  logout = () =>{
+    this.utils.userLogged = false;
+    localStorage.clear();
+    sessionStorage.clear();
+    this.router.navigate(['/'])
+  }
+
+
   ngOnInit(): void {
+    this.isAuth();
+
   }
 
 }

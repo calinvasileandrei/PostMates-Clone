@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Section, UtilsService} from '../utils.service';
+import {HttpClient} from '@angular/common/http';
+import {AjaxService} from '../ajax.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,16 +10,31 @@ import {Section, UtilsService} from '../utils.service';
 })
 export class HomePageComponent implements OnInit {
   sections: Section[];
+
+  url = 'sections';
+
   constructor(
-    private utils: UtilsService
+    private utils: UtilsService,
+    private ajax: AjaxService
   ) { }
 
-  retriveData = () => {
-    this.sections = this.utils.sections;
+  getRestaurants  = () => {
+    this.ajax.get<Section[]>(this.url).subscribe((response) => {
+      this.sections = response;
+    });
+  }
+
+  isAuth = ()=>{
+    if(localStorage.getItem('id') != null &&  localStorage.getItem('nome') != null ){
+      this.utils.userLogged =true;
+    }
   }
 
   ngOnInit(): void {
-    this.retriveData();
+    this.isAuth();
+    this.getRestaurants();
+
+
   }
 
 }

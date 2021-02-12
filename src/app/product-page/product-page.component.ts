@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Shop, Section, UtilsService} from '../utils.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Item, Restaurant, Section, UtilsService} from '../utils.service';
+import {AjaxService} from '../ajax.service';
 
 @Component({
   selector: 'app-product-page',
@@ -8,30 +9,41 @@ import {Shop, Section, UtilsService} from '../utils.service';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
-  sectionId: number;
-  itemId: number;
-  shop: Shop;
-
-
+  sectionId: string;
+  restaurantId: string;
+  restaurant: Restaurant;
 
   constructor(
     private route: ActivatedRoute,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private ajax: AjaxService,
+    private router:Router
   ) { }
+
+  restaurantUrl = 'restaurants/';
 
   retriveParams = () => {
     this.route.params.subscribe((param) => {
       this.sectionId = param.sectionid;
-      this.itemId = param.id;
-      this.retriveItem(this.sectionId, this.itemId);
+      this.restaurantId = param.id;
+      this.retriveRestaurant(this.sectionId, this.restaurantId);
     });
   }
 
 
-  retriveItem = (sectionId, itemId) => {
-    const currenSection: Section = this.utils.sections.find(sectionI => sectionI.id === +sectionId);
-    this.shop = currenSection.shops.find(i => i.id === +itemId);
+  retriveRestaurant = (sectionId, restaurantId) => {
+    this.ajax.get<Restaurant>(this.restaurantUrl + restaurantId).subscribe((responseRest) => {
+      this.restaurant = responseRest;
+      console.log(this.restaurant);
+    });
   }
+
+  gotTOCart=()=>{
+    //save on session
+    sessionStorage.setItem('cart', JSON.stringify(this.utils.cart));
+    this.router.navigate(['/','cart']);
+  }
+
 
 
   ngOnInit(): void {

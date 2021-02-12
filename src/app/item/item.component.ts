@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Item} from '../utils.service';
+import {Item, UtilsService} from '../utils.service';
+import {AjaxService} from '../ajax.service';
 
 @Component({
   selector: 'app-item',
@@ -9,10 +10,30 @@ import {Item} from '../utils.service';
 export class ItemComponent implements OnInit {
   @Input() categoryId: number;
   @Input() categoryTitle: string;
-  @Input() item: Item;
-  constructor() { }
+  @Input() itemId: string;
+  item: Item;
+
+  constructor(
+      private ajax: AjaxService,
+      private utils: UtilsService
+  ) { }
+
+  url = 'products/';
+
+  getItem = () => {
+    this.ajax.get<Item>(this.url+this.itemId).subscribe((responseItem)=>{
+      this.item = responseItem;
+      //console.log("item: ",this.item);
+    })
+  }
+
+  addToCart = () =>{
+    this.utils.cart.push(this.item);
+    this.utils.cartTotale += this.item.price;
+  }
 
   ngOnInit(): void {
+    this.getItem();
   }
 
 }
