@@ -1,0 +1,71 @@
+<div class="container-fluid m-0 p-0">
+  <app-header [buttons]="true" ></app-header>
+  <div class="container-fluid header-spacer m-0 p-0 "></div>
+  <div class="bg-image">
+    <div class="row">
+      <div class="col-10 offset-1">
+        <h1 class="post-f-bold post-f-xxxlarge ml-5 mt-3">You Crave.</h1>
+        <h1 class="post-f-bold post-f-xxxlarge ml-5 mt-2">We get it.</h1>
+      </div>
+    </div>
+  </div>
+  <app-type-bar></app-type-bar>
+  <div class="container-fluid bg-white scrollable-content p-0 m-0">
+    <div class="row p-0 m-0">
+      <div class="col-10 offset-1">
+
+        <table class="table table-striped">
+          <thead>
+          <th>Prodotto</th>
+          <th>Prezzo</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of this.cart">
+            <td> {{item.title}}</td>
+            <td>{{item.price | currency: 'USD'}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+
+        <div *ngIf="this.cartTotale>0" class="mb-5">
+          <h4>Totale: {{this.cartTotale | currency: 'USD'}}</h4>
+        </div>
+        <div *ngIf="this.cartTotale<=0 ">
+          <span>Nessun Elemeno nel Carrello!</span>
+        </div>
+
+        <div class="row justify-content-center mt-5 mb-5">
+          <div class="col-12 mb-5">
+            <h1>Completa il tuo ordine!</h1>
+          </div>
+          <div class="col-8 ">
+            <form [formGroup]="form">
+              <div class="form-group">
+                <p>Data consegna:</p>
+                <input type="date" class="form-control" formControlName="date">
+                <br>
+                <p>Ora consegna:</p>
+                <input type="time" class="form-control" formControlName="time">
+                <br>
+                <p>Città:</p>
+                <input type="text" class="form-control" formControlName="city">
+                <br>
+                <p>Indirizzo:</p>
+                <input type="text" class="form-control" formControlName="address">
+                <br>
+                <p>Piano:</p>
+                <input type="number" class="form-control" formControlName="floor">
+                <br>
+                <p>Note:</p>
+                <input type="text" class="form-control" formControlName="notes">
+              </div>
+              <button type="submit" (click)="storeCart()"  class="btn btn-warning">INVIA</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <app-header [buttons]="false" ></app-header>
+
+  <div class="col-6 offset-3">
+    <div class="row justify-content-center">
+
+      <div class="col-12 d-flex justify-content-center mt-5">
+        <h2>Register</h2>
+      </div>
+      <div class="col-8">
+        <form [formGroup]="form" (ngSubmit) = "printData()"  >
+          <div class="form-group">
+            <p>Nome:</p>
+            <input type="text" class="form-control" formControlName="name">
+            <br>
+            <p>Cognome:</p>
+            <input type="text" class="form-control" formControlName="surname">
+            <br>
+            <p>Telefono:</p>
+            <input type="number" class="form-control" formControlName="phone">
+            <br>
+            <p>Età:</p>
+            <input type="number" class="form-control" formControlName="age">
+            <br>
+            <p>E-mail:</p>
+            <input type="text" class="form-control" formControlName="email">
+            <br>
+            <p>Password:</p>
+            <input type="password" class="form-control" formControlName="password">
+            <br>
+            <p>Conferma Password:</p>
+            <input type="password" class="form-control" formControlName="passwordConfirm">
+          </div>
+          <button type="submit" [disabled] = "!form.valid" class="btn btn-warning">INVIA</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div class="row justify-content-center">
+</div>
+
+
+
