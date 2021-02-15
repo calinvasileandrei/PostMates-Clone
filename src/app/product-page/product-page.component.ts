@@ -8,6 +8,7 @@ import {AjaxService} from '../ajax.service';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
+
 export class ProductPageComponent implements OnInit {
   sectionId: string;
   restaurantId: string;
@@ -15,7 +16,7 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private utils: UtilsService,
+    public utils: UtilsService,
     private ajax: AjaxService,
     private router:Router
   ) { }
@@ -40,7 +41,7 @@ export class ProductPageComponent implements OnInit {
 
   gotTOCart=()=>{
     //save on session
-    sessionStorage.setItem('cart', JSON.stringify(this.utils.cart));
+    //sessionStorage.setItem('cart', JSON.stringify(this.utils.cart));
     this.router.navigate(['/','cart']);
   }
 
@@ -48,6 +49,7 @@ export class ProductPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.retriveParams();
+    this.utils.getCartArray();
   }
 
 }

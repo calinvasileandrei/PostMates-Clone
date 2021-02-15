@@ -3,6 +3,8 @@ import {Item, UtilsService} from '../utils.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
+import {AuthService} from '../auth.service';
+import {AjaxService} from '../ajax.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -19,7 +21,9 @@ export class CartPageComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     public utils:UtilsService,
-    private router : Router
+    private router : Router,
+    private auth: AuthService,
+    private ajax: AjaxService
 
   ) { }
 
@@ -29,7 +33,11 @@ export class CartPageComponent implements OnInit {
   }
 
   getCartArray(){
-    this.cart = JSON.parse(sessionStorage.getItem('cart'));
+    this.ajax.getCart().subscribe((cartResponse:Item[])=>{
+      this.cart = cartResponse;
+      this.calculateCartTotal();
+    })
+    //this.cart = JSON.parse(sessionStorage.getItem('cart'));
   }
 
   calculateCartTotal(){
@@ -56,10 +64,7 @@ export class CartPageComponent implements OnInit {
   }
 
   isAuth = ()=>{
-    this.idUtente = localStorage.getItem('id');
-    this.nomeUtente = localStorage.getItem('nome');
-    console.log("id:"+this.idUtente);
-    if(this.idUtente == null &&  this.nomeUtente ==null ){
+    if(this.auth.isLoggedOut()){
       this.router.navigate(['/','login']);
     }
   }
@@ -69,7 +74,6 @@ export class CartPageComponent implements OnInit {
     this.initForm();
     this.getParams();
     this.getCartArray();
-    this.calculateCartTotal();
   }
 
 }

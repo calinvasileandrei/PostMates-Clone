@@ -1,22 +1,23 @@
 <div class="container-fluid">
   <app-header [buttons]="false" ></app-header>
 
-  <div class="col-6 offset-3">
-    <div class="row justify-content-center">
+  <div class="col-6 offset-3 ">
+    <div class="row justify-content-center post-card-rounded mt-5 p-5">
 
-      <div class="col-12 d-flex justify-content-center mt-5">
-        <h2>Login</h2>
+      <div class="col-12 d-flex justify-content-center mt-5 mb-2">
+        <h1>Let's eat</h1>
       </div>
-      <div class="col-8">
+      <div class="col-8 mb-5">
         <form [formGroup]="formLogin" (ngSubmit) = "login()">
           <div class="form-group">
             <p>E-mail:</p>
-            <input type="text" class="form-control" formControlName="email">
+            <input type="email" class="form-control post-input" placeholder="Email .." formControlName="email">
             <br>
             <p>Password:</p>
-            <input type="password" class="form-control" formControlName="password">
+            <input type="password" class="form-control post-input" placeholder="Password..." formControlName="password">
           </div>
-          <button type="submit" [disabled] = "!formLogin.valid" class="btn btn-warning" >LOGIN</button>
+          <button type="submit" [disabled] = "!formLogin.valid" class="btn btn-warning post-button post-rounded mt-2" >LOGIN</button>
+          <span *ngIf="errorLogin"  class="text-danger" >User not registered!</span>
         </form>
 
       </div>

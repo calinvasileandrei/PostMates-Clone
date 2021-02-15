@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UtilsService} from '../utils.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public utils: UtilsService,
-    public router: Router
+    public router: Router,
+    public auth: AuthService
   ) { }
 
   selectTheme = () => {
@@ -28,24 +30,13 @@ export class HeaderComponent implements OnInit {
     return this.whiteTheme ? 'post-c-white' : 'post-c-yellow';
   }
 
-  isAuth = ()=>{
-    if(localStorage.getItem('id') != null ){
-      this.logged = false;
-      console.log("logged in");
-    }
-  }
-
   logout = () =>{
-    this.utils.userLogged = false;
-    localStorage.clear();
-    sessionStorage.clear();
+    this.auth.logout();
     this.router.navigate(['/'])
   }
 
 
   ngOnInit(): void {
-    this.isAuth();
-
   }
 
 }

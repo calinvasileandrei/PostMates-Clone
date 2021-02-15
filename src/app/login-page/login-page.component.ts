@@ -1,54 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import {AjaxService} from '../ajax.service';
-import {UtilsService} from '../utils.service';
+import {AuthUser, UtilsService} from '../utils.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
+
+
 export class LoginPageComponent implements OnInit {
-  formLogin;
+  formLogin:FormGroup ;
   user;
-  id;
+  id:string;
+  errorLogin:boolean = false;
 
   constructor(
     private ajax : AjaxService,
     private utils : UtilsService,
-    private router : Router
+    private router : Router,
+    private auth: AuthService
   ) { }
 
 
-  login = ()=>{
-
-    //Login
-    this.ajax.auth('users/sign_in.json', {
-      "user" : this.formLogin.value
-    }).subscribe((response) => {
-      console.log(response);
-      console.log("Login effettuato");
-      this.utils.userLogged = true;
-      console.log(this.utils.userLogged);
-
-      this.user = response;
-      this.id = response['id'];
-
-      localStorage.setItem("id", this.id);
-      localStorage.setItem("name", this.user.name);
-      console.log("navigation next");
+  login = async ()=>{
+    let formuser:LoginForm = this.formLogin.value;
+    let status = await this.auth.login(formuser.email,formuser.password);
+    if(status){
       this.router.navigate(['/']);
+    }else{
+      this.errorLogin = true;
 
-    })
-
-
+    }
   }
 
   initForm(){
     this.formLogin = new FormGroup({
-      email : new FormControl("", [Validators.required]),
-      password : new FormControl("", [Validators.required])
+      email : new FormControl("calinvasileandrei@gmail.com", [Validators.required]),
+      password : new FormControl("postmates", [Validators.required])
     });
   }
 
@@ -56,4 +48,9 @@ export class LoginPageComponent implements OnInit {
 
     this.initForm();
   }
+}
+
+interface LoginForm{
+  email:string;
+  password: string;
 }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AjaxService} from '../ajax.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UtilsService} from '../utils.service';
+import {User, UtilsService} from '../utils.service';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -10,14 +11,15 @@ import {UtilsService} from '../utils.service';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
-  form;
-  user;
+  form:FormGroup;
+  user:User;
   id;
 
   constructor(
     private ajax : AjaxService,
     private router : Router,
-    private utils : UtilsService
+    private utils : UtilsService,
+    private auth: AuthService
   ) { }
 
   initForm(){
@@ -36,25 +38,11 @@ export class RegisterPageComponent implements OnInit {
 
   printData(){
     console.log(this.form.value);
+    let registerUser: RegisterForm = this.form.value;
+    let res = this.auth.register(registerUser);
+    console.log(res);
 
-    //Registrazione
-    this.ajax.auth('users.json', {
-      "user" : this.form.value
-    }).subscribe((response) =>{
-
-      console.log("Registrazione inviata");
-      console.log(response);
-      this.utils.userLogged = true;
-      console.log(this.utils.userLogged);
-
-      this.user = response;
-      this.id = this.user.id;
-      localStorage.setItem("id", this.id);
-      localStorage.setItem("name", this.user.name);
-
-      this.router.navigate(['/']);
-    })
-
+    this.router.navigate(['/','login']);
 
   }
 
@@ -62,4 +50,14 @@ export class RegisterPageComponent implements OnInit {
     this.initForm();
   }
 
+}
+
+export interface RegisterForm{
+  name:string;
+  surname: string;
+  phone: string;
+  email: string
+  age: number;
+  password:string;
+  passwordConfirm:string;
 }

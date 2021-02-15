@@ -37,9 +37,11 @@
                 <div class="col-12">
                   <div *ngFor="let _item of this.utils.cart" class="mt-2">
                     <div class="row d-flex align-items-baseline border-bottom">
-                      <div class="col-8 border-right">
-                        <div class="p-2">
-                           {{_item.title}}</div>
+                      <div class="col-8 border-right ">
+                        <div class="p-2 d-flex align-content-center">
+                            <span class="material-icons post-f-large " (click)="utils.removeItem(_item)" >delete</span>
+                          <span class="text-bottom"> {{_item.title}}</span>
+                        </div>
                       </div>
                       <div class="col-4">
                         {{_item.price | currency:'USD'}}

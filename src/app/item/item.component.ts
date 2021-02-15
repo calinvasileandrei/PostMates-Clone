@@ -27,10 +27,6 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  addToCart = () =>{
-    this.utils.cart.push(this.item);
-    this.utils.cartTotale += this.item.price;
-  }
 
   ngOnInit(): void {
     this.getItem();
