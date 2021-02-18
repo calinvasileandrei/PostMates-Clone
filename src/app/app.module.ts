@@ -18,6 +18,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthInterceptor} from './auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {AuthInterceptor} from './auth.interceptor';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule
     ],
   providers: [
     AjaxService,

@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit {
 
   logout = () =>{
     this.auth.logout();
+    this.utils.resetCart();
     this.router.navigate(['/'])
   }
 

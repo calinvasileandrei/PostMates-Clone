@@ -20,18 +20,12 @@ export class HomePageComponent implements OnInit {
 
   getRestaurants  = () => {
     this.ajax.get<Section[]>(this.url).subscribe((response) => {
+      console.log(response);
       this.sections = response;
     });
   }
 
-  isAuth = ()=>{
-    if(localStorage.getItem('id') != null &&  localStorage.getItem('nome') != null ){
-      this.utils.userLogged =true;
-    }
-  }
-
   ngOnInit(): void {
-    this.isAuth();
     this.getRestaurants();
 
 

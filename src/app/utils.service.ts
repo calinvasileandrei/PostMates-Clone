@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AjaxService} from './ajax.service';
+import {AuthService} from './auth.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,21 @@ import {AjaxService} from './ajax.service';
 export class UtilsService {
 
     constructor(
-      public ajax: AjaxService
+      public ajax: AjaxService,
+      private auth: AuthService,
+      private router:Router
+
     ) {
     }
 
     cart:Item[] =[];
     cartTotale:number=0;
     userLogged:boolean = false;
+
+    resetCart =()=>{
+      this.cartTotale =0;
+      this.cart =[];
+    }
 
     removeItem = (item:Item) =>{
       var index = this.cart.indexOf(item);
@@ -27,12 +37,17 @@ export class UtilsService {
     }
 
     addItem = (item) =>{
-      this.cart.push(item);
-      this.cartTotale += item.price;
-      console.log("add item")
-      this.ajax.addProductToCart(item).subscribe((res)=>{
-        console.log("item add res: ",res)
-      });
+      if(this.auth.isLoggedIn()){
+        this.cart.push(item);
+        this.cartTotale += item.price;
+        console.log("add item")
+        this.ajax.addProductToCart(item).subscribe((res)=>{
+          console.log("item add res: ",res)
+        });
+      }else{
+        this.router.navigate(["/","login"]);
+      }
+
     }
 
     getCartArray = () =>{

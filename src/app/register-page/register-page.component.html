@@ -1,46 +1,45 @@
 <div class="container-fluid">
   <app-header [buttons]="false" ></app-header>
 
-  <div class="col-6 offset-3">
-    <div class="row justify-content-center">
+  <div class="col-6 offset-3 ">
+    <div class="row justify-content-center post-card-rounded mt-5 p-5">
 
-      <div class="col-12 d-flex justify-content-center mt-5">
-        <h2>Register</h2>
+      <div class="col-12 d-flex justify-content-center mt-5 mb-2">
+        <h1>Let's eat</h1>
       </div>
-      <div class="col-8">
+      <div class="col-8 mb-5">
         <form [formGroup]="form" (ngSubmit) = "printData()"  >
           <div class="form-group">
             <p>Nome:</p>
-            <input type="text" class="form-control" formControlName="name">
+            <input type="text" class="form-control post-input" formControlName="name">
             <br>
             <p>Cognome:</p>
-            <input type="text" class="form-control" formControlName="surname">
+            <input type="text" class="form-control post-input" formControlName="surname">
             <br>
             <p>Telefono:</p>
-            <input type="number" class="form-control" formControlName="phone">
+            <input type="number" class="form-control post-input" formControlName="phone">
             <br>
             <p>Età:</p>
-            <input type="number" class="form-control" formControlName="age">
+            <input type="number" class="form-control post-input" formControlName="age">
             <br>
             <p>E-mail:</p>
-            <input type="text" class="form-control" formControlName="email">
+            <input type="text" class="form-control post-input" formControlName="email">
             <br>
             <p>Password:</p>
-            <input type="password" class="form-control" formControlName="password">
+            <input type="password" class="form-control post-input" formControlName="password">
             <br>
             <p>Conferma Password:</p>
-            <input type="password" class="form-control" formControlName="passwordConfirm">
+            <input type="password" class="form-control post-input" formControlName="passwordConfirm">
           </div>
-          <button type="submit" [disabled] = "!form.valid" class="btn btn-warning">INVIA</button>
+          <button type="submit" [disabled] = "!form.valid" class="btn btn-warning post-button post-rounded mt-2">Register</button>
         </form>
+
 
       </div>
 
     </div>
   </div>
 
-</div>
-<div class="row justify-content-center">
 </div>
 
 
