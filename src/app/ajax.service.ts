@@ -11,7 +11,7 @@ export class AjaxService {
     private http: HttpClient
   ) { }
 
-  url = 'http://postmates.calinvasileandrei.ovh/';
+  url = 'https://postmates.calinvasileandrei.ovh/';
   //url = 'http://localhost:3000/';
 
   get = <T> (param) => {

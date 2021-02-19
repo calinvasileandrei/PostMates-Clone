@@ -9,13 +9,13 @@
         </div>
         <div class="col-auto">
           <ul class="list-inline mt-2">
-            <li class="list-inline-item pr-2 pl-2 border-bottom border-dark post-f-xsmall"> FOOD </li>
-            <li class="list-inline-item pr-2 pl-2 post-f-xsmall">FRESH</li>
-            <li class="list-inline-item pr-2 pl-2 post-f-xsmall">DRINKS</li>
-            <li class="list-inline-item pr-2 pl-2 post-f-xsmall" [routerLink]="['/cart']" >CART</li>
+            <li class="list-inline-item pr-2 pl-2 border-bottom border-dark post-f-xsmall post-list-item"> FOOD </li>
+            <li class="list-inline-item pr-2 pl-2 post-f-xsmall post-list-item">FRESH</li>
+            <li class="list-inline-item pr-2 pl-2 post-f-xsmall post-list-item">DRINKS</li>
+            <li class="list-inline-item pr-2 pl-2 post-f-xsmall post-list-item" [routerLink]="['/cart']" >CART</li>
 
             <li class="list-inline-item pr-2" *ngIf="!this.auth.isLoggedIn()" >
-              <button class="btn container-rounded" *ngIf="buttons"[routerLink]="['/login']" >
+              <button class="btn container-rounded post-yellow-button" *ngIf="buttons"[routerLink]="['/login']" >
                 <b class="post-f-xsmall">SIGN IN</b>
               </button>
             </li>
@@ -33,8 +33,11 @@
         </div>
       </div>
     </div>
-    <div class="col-12 mobile">
-      <app-search-bar [placeholder]="'Search for anything...'"></app-search-bar>
+    <div class="col-12 mobile d-inline-flex align-items-bottom justify-content-between">
+      <span class="post-title align-self-center" [routerLink]="['']" >Postmates</span>
+      <button mat-icon-button color="'#000'" aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
   </div>
 </div>

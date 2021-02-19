@@ -29,6 +29,7 @@ export class LoginPageComponent implements OnInit {
   login = async ()=>{
     let formuser:LoginForm = this.formLogin.value;
     let status = await this.auth.login(formuser.email,formuser.password);
+
     if(status){
       this.router.navigate(['/']);
     }else{

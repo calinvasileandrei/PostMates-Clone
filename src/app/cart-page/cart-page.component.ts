@@ -36,6 +36,12 @@ export class CartPageComponent implements OnInit {
     this.ajax.getCart().subscribe((cartResponse:Item[])=>{
       this.cart = cartResponse;
       this.calculateCartTotal();
+    },error => {
+      console.log("error:",error.error.error);
+      if(error.error.error =="invalid_token"){
+        this.auth.logout();
+        this.router.navigate(["/","login"]);
+      }
     })
     //this.cart = JSON.parse(sessionStorage.getItem('cart'));
   }

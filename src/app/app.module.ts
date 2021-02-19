@@ -19,6 +19,8 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthInterceptor} from './auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -34,15 +36,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ItemsCategoryComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    CartPageComponent
+    CartPageComponent,
+
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+
+  ],
   providers: [
     AjaxService,
     {

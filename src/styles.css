@@ -189,9 +189,27 @@
   margin-right: 2em;
 }
 
+.post-yellow-button{
+  background-color: #FED928;
+  color: black;
+  border: solid 1px #000;
+}
+
+.post-yellow-button:hover{
+  background-color: #000;
+  color: #fff;
+  border: solid 1px #000;
+}
+
+
+
 .post-black-button{
   background-color: #000;
   border: solid 1px #000;
+}
+
+.post-black-button:hover{
+  color: #fff;
 }
 
 .bg-image{
@@ -260,6 +278,21 @@
 .post-title{
   font-size: medium;
   font-weight: bold;
+  transition: font-size 0.2s;
+}
+
+.post-title:hover{
+  cursor: pointer;
+  font-size: large;
+}
+
+.post-list-item{
+  transition: font-size 0.2s;
+}
+
+.post-list-item:hover{
+  font-size: smaller;
+  cursor: default;
 }
 
 .selected-border{
